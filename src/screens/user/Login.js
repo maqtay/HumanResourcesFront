@@ -16,6 +16,7 @@ export default class UserLogin extends Component {
         this.password = React.createRef();
 
         this.login = this.login.bind(this);
+        this.goSignUp = this.goSignUp.bind(this);
     }
 
     login() {
@@ -29,6 +30,11 @@ export default class UserLogin extends Component {
             }
         });
     }
+
+    goSignUp() {
+        this.props.history.replace('/user/signup');
+    }
+    
     render() {
         return (
             <div className="login-dark vh-100">
@@ -48,8 +54,8 @@ export default class UserLogin extends Component {
                         <a className="forgot" href="#">
                             Şifrenizi mi unuttunuz?
                         </a>
-                        <a id="help" className="forgot" href="#">
-                            Yardım.
+                        <a id="signup" className="forgot" onClick={this.goSignUp}>
+                            Hesabınız yok mu? Kaydolun
                         </a>
                     </div>
                 </form>          
