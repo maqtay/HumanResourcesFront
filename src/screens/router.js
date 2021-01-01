@@ -20,7 +20,7 @@ export default class Routes extends Component {
                     <Route path="/user/login" component={UserLogin}/>
                     <Route path="/user/profile" component={UserProfile}/>
                     <Route path="/user/signup" component={UserSignUp}/>
-                    <Route exact path="/" component={Home}/>
+                    <Route path="/" component={Home}/>
 
                 </Switch>
             </Router>
