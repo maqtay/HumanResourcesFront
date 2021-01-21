@@ -1,9 +1,10 @@
 import Pages from "./screens/router";
+import './App.css';
 function App() {
   return (
-    <div className="App">
+    <>
       <Pages/>
-    </div>
+    </>
   );
 }
 

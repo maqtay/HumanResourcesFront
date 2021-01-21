@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 
-import UserService from '../../services/UserService';
-
 import logo from "../../assets/images/logo.png";
 import "../../assets/css/user/userlogin.css";
+import AuthService from '../../services/AuthService';
 
 
 export default class UserSignUp extends Component {
@@ -20,18 +19,14 @@ export default class UserSignUp extends Component {
         this.goLogin = this.goLogin.bind(this);
     }
 
-    signup() {
-        const user = {
-            username: this.username.current.value,
-            email: this.email.current.value,
-            fName: this.fName.current.value,
-            password: this.password.current.value,
-        }
+    signup(e) {
+        e.preventDefault();
+        const username = this.username.current.value;
+        const email = this.email.current.value;
+        const password = this.password.current.value;
 
-        UserService.signup(user).then((isSignup) => {
-            if(isSignup) {
-                this.goLogin();
-            }
+        AuthService.signUp(username, email, password).then(() => {
+            this.props.history.replace('/user/login');
         }).catch((err)=>  {
             console.log(err);
         })
@@ -44,7 +39,12 @@ export default class UserSignUp extends Component {
     render() {
         return (
             <div className="login-dark vh-100">
-                <form method="get" onSubmit={() => this.login()}>
+                <form 
+                    onSubmit={this.signup} 
+                    ref={c => {
+                        this.form = c;
+                    }}
+                    >
                     <div className="illustration">
                         <p className="header-style">
                             İnsan Kaynakları Yönetim Sistemi

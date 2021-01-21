@@ -7,23 +7,28 @@ import {
     AdminPanel,
     UserLogin,
     UserProfile,
-    UserSignUp
+    UserSignUp,
+    ErrorPage,
+    AboutMe,
+    Contact
 } from './';
+import Navbar from '../components/Navbar';
 
-export default class Routes extends Component {
-    render() {
-        return (
-            <Router>
-                <Switch>
-                    <Route path="/admin/login" component={AdminLogin}/>
-                    <Route path="/admin" component={AdminPanel}/>
-                    <Route path="/user/login" component={UserLogin}/>
-                    <Route path="/user/profile" component={UserProfile}/>
-                    <Route path="/user/signup" component={UserSignUp}/>
-                    <Route path="/" component={Home}/>
-
-                </Switch>
-            </Router>
-        )
-    }
+export default function Routes() {
+    return (
+        <Router>
+            <Navbar/>
+            <Switch>
+                <Route path="/" exact component={Home}/>
+                <Route path="/admin/login" component={AdminLogin}/>
+                <Route path="/admin" component={AdminPanel}/>
+                <Route path="/user/login" component={UserLogin}/>
+                <Route path="/user/profile" component={UserProfile}/>
+                <Route path="/user/signup" component={UserSignUp}/>
+                <Route path="/about" component={AboutMe}/>
+                <Route path="/contact" component={Contact}/>
+                <Route path="*" component={ErrorPage}/>
+            </Switch>
+        </Router>
+    )
 }

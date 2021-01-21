@@ -6,7 +6,6 @@ class UserService {
             resolve(true);
         })
     }
-
 }
 
 export default new UserService();

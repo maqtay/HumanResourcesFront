@@ -19,7 +19,9 @@ export default class UserLogin extends Component {
         this.goSignUp = this.goSignUp.bind(this);
     }
 
-    login() {
+    login(e) {
+        e.preventDefault();
+
         const username = this.username.current.value;
         const password = this.password.current.value;
 
@@ -38,7 +40,11 @@ export default class UserLogin extends Component {
     render() {
         return (
             <div className="login-dark vh-100">
-                <form method="get" onSubmit={() => this.login()}>
+                <form 
+                    ref={c => {
+                        this.form = c;
+                    }} 
+                    onSubmit={this.login}>
                     <div className="illustration">
                         <p className="header-style">İnsan Kaynakları Yönetim Sistemi</p><img src={logo} loading="auto" width="100" height="100" />
                     </div>
